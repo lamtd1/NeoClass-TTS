@@ -3,9 +3,12 @@ import torch
 
 model = VitsModel.from_pretrained("facebook/mms-tts-vie")
 tokenizer = AutoTokenizer.from_pretrained("facebook/mms-tts-vie")
-
+# unable to directly read number
 text = "1 2 3 4 5 6 7 8 9 10"
-inputs = tokenizer(text, return_tensors="pt")
+
+text_2 = "một hai ba bốn năm sáu bảy tám chín mười"
+
+inputs = tokenizer(text_2, return_tensors="pt")
 
 with torch.no_grad():
     output = model(**inputs).waveform
